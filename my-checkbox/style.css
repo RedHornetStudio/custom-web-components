@@ -1,0 +1,80 @@
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+#agree {
+  display: none;
+}
+
+.my-checkbox {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background-color: #c4c4c466;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  cursor: default;
+}
+
+.my-checkbox span {
+  opacity: 0;
+}
+
+/* hover state styling */
+#agree + .my-checkbox:hover {
+  background-color: #b4b4b466;
+}
+
+#agree:checked + .my-checkbox:hover {
+  background-color: #e09600;
+}
+
+#agree:hover + .my-checkbox {
+  background-color: #b4b4b466;
+}
+
+#agree:checked:hover + .my-checkbox {
+  background-color: #e09600;
+}
+
+/* checked styling */
+#agree:checked + .my-checkbox {
+  background-color: #FFA800;
+}
+
+#agree:checked + .my-checkbox > span {
+  opacity: 1;
+}
+
+/* active state styling */
+#agree + .my-checkbox:active {
+  background-color: #8a8a8a66;
+}
+
+#agree:checked + .my-checkbox:active {
+  background-color: #b37700;
+}
+
+#agree:active + .my-checkbox {
+  background-color: #8a8a8a66;
+}
+
+#agree:checked:active + .my-checkbox {
+  background-color: #b37700;
+}
+
+#agree + .my-checkbox.active {
+  background-color: #8a8a8a66;
+}
+
+#agree:checked + .my-checkbox.active {
+  background-color: #b37700;
+}
+
+.agree-label {
+  margin-left: 1rem;
+  font-size: 14px;
+}
