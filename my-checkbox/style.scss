@@ -1,10 +1,9 @@
+$checkboxColor: #c4c4c4;
+$checkboxColorChecked: #ffa800;
+
 .checkbox-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
 }
 
 #agree {
@@ -12,43 +11,41 @@
 }
 
 .my-checkbox {
-  -webkit-box-flex: 0;
-      -ms-flex: none;
-          flex: none;
+  flex: none;
   width: 16px;
   height: 16px;
-  background-color: #c4c4c4;
+  background-color: $checkboxColor;
   border-radius: 4px;
   font-size: 12px;
   text-align: center;
   color: white;
   cursor: default;
-}
 
-.my-checkbox span {
-  opacity: 0;
+  span {
+    opacity: 0;
+  }
 }
 
 /* hover state styling */
 #agree + .my-checkbox:hover {
-  background-color: #b7b7b7;
+  background-color: darken($checkboxColor, 5%);
 }
 
 #agree:checked + .my-checkbox:hover {
-  background-color: #f5a100;
+  background-color: darken($checkboxColorChecked, 2%);
 }
 
 #agree:hover + .my-checkbox {
-  background-color: #b7b7b7;
+  background-color: darken($checkboxColor, 5%);
 }
 
 #agree:checked:hover + .my-checkbox {
-  background-color: #f5a100;
+  background-color: darken($checkboxColorChecked, 2%);
 }
 
 /* checked styling */
 #agree:checked + .my-checkbox {
-  background-color: #ffa800;
+  background-color: $checkboxColorChecked;
 }
 
 #agree:checked + .my-checkbox > span {
@@ -57,31 +54,30 @@
 
 /* active state styling */
 #agree + .my-checkbox:active {
-  background-color: #ababab;
+  background-color: darken($checkboxColor, 10%);
 }
 
 #agree:checked + .my-checkbox:active {
-  background-color: #e69700;
+  background-color: darken($checkboxColorChecked, 5%);
 }
 
 #agree:active + .my-checkbox {
-  background-color: #ababab;
+  background-color: darken($checkboxColor, 10%);
 }
 
 #agree:checked:active + .my-checkbox {
-  background-color: #e69700;
+  background-color: darken($checkboxColorChecked, 5%);
 }
 
 #agree + .my-checkbox.active {
-  background-color: #ababab;
+  background-color: darken($checkboxColor, 10%);
 }
 
 #agree:checked + .my-checkbox.active {
-  background-color: #e69700;
+  background-color: darken($checkboxColorChecked, 5%);
 }
 
 .agree-label {
   margin-left: 24px;
   font-size: 14px;
 }
-/*# sourceMappingURL=style.css.map */

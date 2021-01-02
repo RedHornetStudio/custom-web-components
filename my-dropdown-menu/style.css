@@ -7,8 +7,12 @@
 }
 
 .my-dropdown-menu .selected-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .my-dropdown-menu .arrow {
@@ -19,13 +23,18 @@
 .my-dropdown-menu .options {
   position: absolute;
   display: none;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   left: 50%;
   top: 100%;
   border-radius: 0 0 5px 5px;
-  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
   overflow: hidden;
-  box-shadow: 2px 2px 4px 0px rgb(148, 148, 148);
+  -webkit-box-shadow: 2px 2px 4px 0px #949494;
+          box-shadow: 2px 2px 4px 0px #949494;
 }
 
 .my-dropdown-menu .option {
@@ -35,6 +44,8 @@
 }
 
 .my-dropdown-menu .show {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -43,5 +54,7 @@
 }
 
 .my-dropdown-menu .rotate-up {
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
+/*# sourceMappingURL=style.css.map */
