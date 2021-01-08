@@ -27,6 +27,10 @@
 
 .my-checkbox span {
   opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 /* hover state styling */
