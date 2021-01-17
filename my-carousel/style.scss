@@ -1,0 +1,113 @@
+$buttonColor: #fff;
+
+// remove body selector
+body {
+  padding-top: 200px;
+}
+
+.my-carousel {
+  position: relative;
+  height: 600px;
+  // width: 80%;
+  width: 40%;
+  margin: 0 auto;
+  // overflow: hidden;
+}
+
+.my-carousel__track {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  list-style: none;
+}
+
+.my-carousel__slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.my-carousel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// left and right button styling
+.my-carousel__button {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  width: 70px;
+  transform: translateY(-50%);
+  background-color: transparentize($buttonColor, 1);
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+
+  img {
+    filter: invert(1);
+    opacity: .7;
+  }
+}
+
+.my-carousel__button--left {
+  left: 0;
+}
+
+.my-carousel__button--right {
+  right: 0;
+}
+
+.my-carousel__button:hover {
+  background-color: transparentize($buttonColor, .8);;
+}
+
+.my-carousel__button:active {
+  background-color: transparentize($buttonColor, .7);;
+}
+
+// carousel nav styling
+.my-carousel__nav {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  max-width: 500px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.my-carousel__indicator {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparentize($buttonColor, .3);
+}
+
+// slide styling (this classes is used by javascript)
+.put-to-back {
+  transform: translateY(-100%);
+}
+
+.put-to-left {
+  transform: translateX(-100%);
+}
+
+.put-to-right {
+  transform: translateX(100%);
+}
+
+.move-animation {
+  transition: transform 500ms ease-out;
+  z-index: 1;
+}
+
+.my-carousel__indicator.current-indicator {
+  background-color: $buttonColor;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>My carousel</title>
+</head>
+<body>
+  <div class="my-carousel">
+    <button class="my-carousel__button my-carousel__button--left">
+      <img src="img/circle-left.svg" alt="left arrow">
+    </button>
+    
+    <ul class="my-carousel__track">
+      <li class="my-carousel__slide current-slide">
+        <img src="img/slide-1.jpg" alt="" class="my-carousel__image">
+      </li>
+      <li class="my-carousel__slide">
+        <img src="img/slide-2.jpg" alt="" class="my-carousel__image">
+      </li>
+      <li class="my-carousel__slide">
+        <img src="img/slide-3.jpg" alt="" class="my-carousel__image">
+      </li>
+      <li class="my-carousel__slide">
+        <img src="img/slide-4.jpg" alt="" class="my-carousel__image">
+      </li>
+      <li class="my-carousel__slide">
+        <img src="img/slide-5.jpg" alt="" class="my-carousel__image">
+      </li>
+    </ul>
+
+    <button class="my-carousel__button my-carousel__button--right">
+      <img src="img/circle-right.svg" alt="right arrow">
+    </button>
+
+    <div class="my-carousel__nav">
+      <button class="my-carousel__indicator"></button>
+      <button class="my-carousel__indicator"></button>
+      <button class="my-carousel__indicator"></button>
+      <button class="my-carousel__indicator"></button>
+      <button class="my-carousel__indicator"></button>
+    </div>
+  </div>
+
+  <script src="myCarousel.js"></script>
+</body>
+</html>

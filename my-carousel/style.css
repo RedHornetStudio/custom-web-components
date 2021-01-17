@@ -1,0 +1,116 @@
+body {
+  padding-top: 200px;
+}
+
+.my-carousel {
+  position: relative;
+  height: 600px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.my-carousel__track {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  list-style: none;
+}
+
+.my-carousel__slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.my-carousel__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.my-carousel__button {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  width: 70px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.my-carousel__button img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  opacity: .7;
+}
+
+.my-carousel__button--left {
+  left: 0;
+}
+
+.my-carousel__button--right {
+  right: 0;
+}
+
+.my-carousel__button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.my-carousel__button:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.my-carousel__nav {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  max-width: 500px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 2;
+}
+
+.my-carousel__indicator {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.put-to-back {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.put-to-left {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.put-to-right {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.move-animation {
+  -webkit-transition: -webkit-transform 500ms ease-out;
+  transition: -webkit-transform 500ms ease-out;
+  transition: transform 500ms ease-out;
+  transition: transform 500ms ease-out, -webkit-transform 500ms ease-out;
+  z-index: 1;
+}
+
+.my-carousel__indicator.current-indicator {
+  background-color: #fff;
+}
+/*# sourceMappingURL=style.css.map */
