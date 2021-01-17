@@ -1,17 +1,11 @@
 $buttonColor: #fff;
 
-// remove body selector
-body {
-  padding-top: 200px;
-}
-
 .my-carousel {
   position: relative;
   height: 600px;
-  // width: 80%;
-  width: 40%;
+  width: 80%;
   margin: 0 auto;
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 .my-carousel__track {
@@ -91,21 +85,23 @@ body {
 }
 
 // slide styling (this classes is used by javascript)
-.put-to-back {
-  transform: translateY(-100%);
-}
-
 .put-to-left {
   transform: translateX(-100%);
+  z-index: 1;
 }
 
 .put-to-right {
   transform: translateX(100%);
+  z-index: 1;
+}
+
+.put-to-top {
+  transform: translateX(0);
+  z-index: 1;
 }
 
 .move-animation {
   transition: transform 500ms ease-out;
-  z-index: 1;
 }
 
 .my-carousel__indicator.current-indicator {

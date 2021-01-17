@@ -4,174 +4,197 @@ const nextButton = document.querySelector('.my-carousel__button--right');
 const nav = document.querySelector('.my-carousel__nav');
 const indicators = nav.querySelectorAll('.my-carousel__indicator');
 const slideSpeed = 500;
-let currentSlide = 0;
+const slideIntervalSpeed = 10000;
+let currentSlideIndex = 0;
 let isClickable = true;
+let slideInterval;
 
-// arrange the slides
-slides.forEach((slide, index) => {
-  if(index === 0) {
-    slide.classList.add('current-slide');
-  } else if(index === 1) {
-    slide.classList.add('put-to-right');
-  } else if(index === slides.length - 1) {
-    slide.classList.add('put-to-left');
-  } else {
-    slide.classList.add('put-to-back');
+const moveSlideFromRight = () => {
+  if(!isClickable) {
+    return;
   }
-});
-indicators[0].classList.add('current-indicator')
+
+  let nextSlide;
+  let currentSlide = slides[currentSlideIndex];
+  if(currentSlideIndex === slides.length - 1) {
+    nextSlide = slides[0];
+  } else {
+    nextSlide = slides[currentSlideIndex + 1];
+  }
+
+  nextSlide.classList.add('put-to-right');
+  setTimeout(() => {
+    currentSlide.classList.remove('put-to-top');
+    currentSlide.classList.add('move-animation');
+    currentSlide.classList.add('put-to-left');
+    nextSlide.classList.add('move-animation');
+    nextSlide.classList.add('put-to-top');
+  }, 20);
+
+  if(currentSlideIndex === slides.length - 1) {
+    currentSlideIndex = 0;
+  } else {
+    currentSlideIndex++;
+  }
+  indicators.forEach(indicator => {
+    indicator.classList.remove('current-indicator');
+  })
+  indicators[currentSlideIndex].classList.add('current-indicator');
+
+  isClickable = false;
+  setTimeout(() => {
+    slides.forEach(slide => {
+      slide.classList.remove('put-to-left');
+      slide.classList.remove('put-to-right');
+      slide.classList.remove('move-animation');
+    });
+    isClickable = true;
+  }, slideSpeed);
+};
+
+const moveSlideFromLeft = () => {
+  if(!isClickable) {
+    return;
+  }
+
+  let previousSlide;
+  let currentSlide = slides[currentSlideIndex];
+  if(currentSlideIndex === 0) {
+    previousSlide = slides[slides.length - 1];
+  } else {
+    previousSlide = slides[currentSlideIndex - 1];
+  }
+
+  previousSlide.classList.add('put-to-left');
+  setTimeout(() => {
+    currentSlide.classList.remove('put-to-top');
+    currentSlide.classList.add('move-animation');
+    currentSlide.classList.add('put-to-right');
+    previousSlide.classList.add('move-animation');
+    previousSlide.classList.add('put-to-top');
+  }, 20);
+
+  if(currentSlideIndex === 0) {
+    currentSlideIndex = slides.length - 1;
+  } else {
+    currentSlideIndex--;
+  }
+  indicators.forEach(indicator => {
+    indicator.classList.remove('current-indicator');
+  })
+  indicators[currentSlideIndex].classList.add('current-indicator');
+
+  isClickable = false;
+  setTimeout(() => {
+    slides.forEach(slide => {
+      slide.classList.remove('put-to-left');
+      slide.classList.remove('put-to-right');
+      slide.classList.remove('move-animation');
+    });
+    isClickable = true;
+  }, slideSpeed);
+};
+
+// move slides after some delay
+slideInterval = setInterval(moveSlideFromRight, slideIntervalSpeed);
 
 // when I click left, move slides to the left
 previousButton.addEventListener('click', () => {
-  if(!isClickable) {
-    return;
-  }
-
-  // clear animation
-  slides.forEach(slide => {
-    slide.classList.remove('move-animation');
-  });
-
-  // clear indicartor 
-  indicators.forEach(indicator => {
-    indicator.classList.remove('current-indicator');
-  });
-  
-  // move top slide
-  if(currentSlide - 2 < 0) {
-    slides[slides.length + currentSlide - 2].classList.remove('put-to-back');
-    slides[slides.length + currentSlide - 2].classList.add('put-to-left');
-  } else {
-    slides[currentSlide - 2].classList.remove('put-to-back');
-    slides[currentSlide - 2].classList.add('put-to-left');
-  }
-
-  // move left slide
-  if(currentSlide === 0) {
-    slides[slides.length - 1].classList.remove('put-to-left');
-    slides[slides.length - 1].classList.add('current-slide');
-    slides[slides.length - 1].classList.add('move-animation');
-  } else {
-    slides[currentSlide - 1].classList.remove('put-to-left');
-    slides[currentSlide - 1].classList.add('current-slide');
-    slides[currentSlide - 1].classList.add('move-animation');
-  }
-
-  // move current slide 
-  slides[currentSlide].classList.remove('current-slide');
-  slides[currentSlide].classList.add('put-to-right');
-  slides[currentSlide].classList.add('move-animation');
-
-  // move right slide
-  if(currentSlide === slides.length - 1) {
-    slides[0].classList.remove('put-to-right');
-    slides[0].classList.add('put-to-back');
-  } else {
-    slides[currentSlide + 1].classList.remove('put-to-right');
-    slides[currentSlide + 1].classList.add('put-to-back');
-  }
-
-  if(currentSlide === 0) {
-    currentSlide = slides.length - 1;
-  } else {
-    currentSlide--;
-  }
-
-  indicators[currentSlide].classList.add('current-indicator');
-
-  isClickable = false;
-  setTimeout(() => {
-    isClickable = true;
-  }, slideSpeed);
+  moveSlideFromLeft();
+  clearInterval(slideInterval);
+  slideInterval = setInterval(moveSlideFromRight, slideIntervalSpeed);
 });
-
 
 // when I click right, move slides to the right
 nextButton.addEventListener('click', () => {
-  if(!isClickable) {
-    return;
-  }
-
-  // clear indicator 
-  indicators.forEach(indicator => {
-    indicator.classList.remove('current-indicator');
-  });
-
-  // clear animation
-  slides.forEach(slide => {
-    slide.classList.remove('move-animation');
-  });
-  
-  // move top slide
-  if(currentSlide + 2 > slides.length - 1) {
-    slides[0 + currentSlide + 2 - slides.length].classList.remove('put-to-back');
-    slides[0 + currentSlide + 2 - slides.length].classList.add('put-to-right');
-  } else {
-    slides[currentSlide + 2].classList.remove('put-to-back');
-    slides[currentSlide + 2].classList.add('put-to-right');
-  }
-
-  // move right slide
-  if(currentSlide === slides.length - 1) {
-    slides[0].classList.remove('put-to-right');
-    slides[0].classList.add('current-slide');
-    slides[0].classList.add('move-animation');
-  } else {
-    slides[currentSlide + 1].classList.remove('put-to-right');
-    slides[currentSlide + 1].classList.add('current-slide');
-    slides[currentSlide + 1].classList.add('move-animation');
-  }
-
-  // move current slide 
-  slides[currentSlide].classList.remove('current-slide');
-  slides[currentSlide].classList.add('put-to-left');
-  slides[currentSlide].classList.add('move-animation');
-
-  // move left slide
-  if(currentSlide === 0) {
-    slides[slides.length - 1].classList.remove('put-to-left');
-    slides[slides.length - 1].classList.add('put-to-back');
-  } else {
-    slides[currentSlide - 1].classList.remove('put-to-left');
-    slides[currentSlide - 1].classList.add('put-to-back');
-  }
-
-  if(currentSlide === slides.length - 1) {
-    currentSlide = 0;
-  } else {
-    currentSlide++;
-  }
-
-  indicators[currentSlide].classList.add('current-indicator');
-
-  isClickable = false;
-  setTimeout(() => {
-    isClickable = true;
-  }, slideSpeed);
+  moveSlideFromRight();
+  clearInterval(slideInterval);
+  slideInterval = setInterval(moveSlideFromRight, slideIntervalSpeed);
 });
 
 // when I click the nav indicators, move to that slide
 nav.addEventListener('click', e => {
-    let clickedIndicator;
-    
-    // clear indicator 
+  let clickedIndicatorIndex;
+
+  indicators.forEach((indicator, index) => {
+    if(indicator === e.target) {
+      clickedIndicatorIndex = index;
+    }
+  });
+
+  // clicking indicator smaller than current slide
+  if(clickedIndicatorIndex < currentSlideIndex) {
+    if(!isClickable) {
+      return;
+    }
+  
+    let clickedSlide = slides[clickedIndicatorIndex];
+    let currentSlide = slides[currentSlideIndex];
+  
+    clickedSlide.classList.add('put-to-left');
+    setTimeout(() => {
+      currentSlide.classList.remove('put-to-top');
+      currentSlide.classList.add('move-animation');
+      currentSlide.classList.add('put-to-right');
+      clickedSlide.classList.add('move-animation');
+      clickedSlide.classList.add('put-to-top');
+    }, 20);
+  
+    currentSlideIndex = clickedIndicatorIndex;
     indicators.forEach(indicator => {
       indicator.classList.remove('current-indicator');
-    });
+    })
+    indicators[currentSlideIndex].classList.add('current-indicator');
+  
+    isClickable = false;
+    setTimeout(() => {
+      slides.forEach(slide => {
+        slide.classList.remove('put-to-left');
+        slide.classList.remove('put-to-right');
+        slide.classList.remove('move-animation');
+      });
+      isClickable = true;
+    }, slideSpeed);
 
-    indicators.forEach((indicator, index) => {
-      if(indicator === e.target) {
-        clickedIndicator = index;
-      }
-    });
+    clearInterval(slideInterval);
+    slideInterval = setInterval(moveSlideFromRight, slideIntervalSpeed);
+  }
 
-    if(clickedIndicator < currentSlide) {
-      console.log('previous');
+  // clicking indicator greater than current slide
+  if(clickedIndicatorIndex > currentSlideIndex) {
+    if(!isClickable) {
+      return;
     }
+  
+    let clickedSlide = slides[clickedIndicatorIndex];
+    let currentSlide = slides[currentSlideIndex];
+  
+    clickedSlide.classList.add('put-to-right');
+    setTimeout(() => {
+      currentSlide.classList.remove('put-to-top');
+      currentSlide.classList.add('move-animation');
+      currentSlide.classList.add('put-to-left');
+      clickedSlide.classList.add('move-animation');
+      clickedSlide.classList.add('put-to-top');
+    }, 20);
+  
+    currentSlideIndex = clickedIndicatorIndex;
+    indicators.forEach(indicator => {
+      indicator.classList.remove('current-indicator');
+    })
+    indicators[currentSlideIndex].classList.add('current-indicator');
+  
+    isClickable = false;
+    setTimeout(() => {
+      slides.forEach(slide => {
+        slide.classList.remove('put-to-left');
+        slide.classList.remove('put-to-right');
+        slide.classList.remove('move-animation');
+      });
+      isClickable = true;
+    }, slideSpeed);
 
-    if(clickedIndicator > currentSlide) {
-      console.log('next');
-    }
-
-    e.target.classList.add('current-indicator');
+    clearInterval(slideInterval);
+    slideInterval = setInterval(moveSlideFromRight, slideIntervalSpeed);
+  }
 });
