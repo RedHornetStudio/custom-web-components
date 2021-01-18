@@ -67,6 +67,7 @@ $buttonColor: #fff;
 // carousel nav styling
 .my-carousel__nav {
   position: absolute;
+  display: flex;
   bottom: 0;
   left: 50%;
   max-width: 500px;

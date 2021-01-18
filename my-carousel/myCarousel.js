@@ -98,14 +98,14 @@ const moveSlideFromLeft = () => {
 // move slides after some delay
 slideInterval = setInterval(moveSlideFromRight, slideIntervalSpeed);
 
-// when I click left, move slides to the left
+// when I click left, move slides from the left
 previousButton.addEventListener('click', () => {
   moveSlideFromLeft();
   clearInterval(slideInterval);
   slideInterval = setInterval(moveSlideFromRight, slideIntervalSpeed);
 });
 
-// when I click right, move slides to the right
+// when I click right, move slides from the right
 nextButton.addEventListener('click', () => {
   moveSlideFromRight();
   clearInterval(slideInterval);
