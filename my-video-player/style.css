@@ -1,0 +1,100 @@
+.my-video-player {
+  position: relative;
+}
+
+.my-video-player video {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-video-player .play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 168, 0, 0.5);
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.5);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.my-video-player .play-button .arrow-right {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid rgba(255, 255, 255, 0.5);
+}
+
+.my-video-player .stop-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 168, 0, 0.5);
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.5);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.my-video-player .stop-button .vertical-line-1,
+.my-video-player .stop-button .vertical-line-2 {
+  width: 7px;
+  margin: 15px 0;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.my-video-player .stop-button .vertical-line-1 {
+  margin-left: 15px;
+}
+
+.my-video-player .stop-button .vertical-line-2 {
+  margin-right: 15px;
+}
+
+.my-video-player .show {
+  -webkit-animation: button-animation 1s linear;
+          animation: button-animation 1s linear;
+}
+
+@-webkit-keyframes button-animation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(3, 3);
+            transform: translate(-50%, -50%) scale(3, 3);
+  }
+}
+
+@keyframes button-animation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(3, 3);
+            transform: translate(-50%, -50%) scale(3, 3);
+  }
+}
+/*# sourceMappingURL=style.css.map */

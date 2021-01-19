@@ -3,7 +3,8 @@ const previousButton = document.querySelector('.my-carousel__button--left');
 const nextButton = document.querySelector('.my-carousel__button--right');
 const nav = document.querySelector('.my-carousel__nav');
 const indicators = nav.querySelectorAll('.my-carousel__indicator');
-const slideSpeed = 500;
+const animationDelay = 20;
+const slideSpeed = 500 + animationDelay;
 const slideIntervalSpeed = 10000;
 let currentSlideIndex = 0;
 let isClickable = true;
@@ -29,7 +30,7 @@ const moveSlideFromRight = () => {
     currentSlide.classList.add('put-to-left');
     nextSlide.classList.add('move-animation');
     nextSlide.classList.add('put-to-top');
-  }, 20);
+  }, animationDelay);
 
   if(currentSlideIndex === slides.length - 1) {
     currentSlideIndex = 0;
@@ -72,7 +73,7 @@ const moveSlideFromLeft = () => {
     currentSlide.classList.add('put-to-right');
     previousSlide.classList.add('move-animation');
     previousSlide.classList.add('put-to-top');
-  }, 20);
+  }, animationDelay);
 
   if(currentSlideIndex === 0) {
     currentSlideIndex = slides.length - 1;
@@ -138,7 +139,7 @@ nav.addEventListener('click', e => {
       currentSlide.classList.add('put-to-right');
       clickedSlide.classList.add('move-animation');
       clickedSlide.classList.add('put-to-top');
-    }, 20);
+    }, animationDelay);
   
     currentSlideIndex = clickedIndicatorIndex;
     indicators.forEach(indicator => {
@@ -176,7 +177,7 @@ nav.addEventListener('click', e => {
       currentSlide.classList.add('put-to-left');
       clickedSlide.classList.add('move-animation');
       clickedSlide.classList.add('put-to-top');
-    }, 20);
+    }, animationDelay);
   
     currentSlideIndex = clickedIndicatorIndex;
     indicators.forEach(indicator => {
